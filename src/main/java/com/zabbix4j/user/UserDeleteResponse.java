@@ -23,17 +23,17 @@ public class UserDeleteResponse extends ZabbixApiResponse {
     }
 
     public class Result {
-        private List<Integer> usrgrpids;
+        private List<Integer> userids;
 
         public Result() {
         }
 
-        public List<Integer> getUsrgrpids() {
-            return usrgrpids;
+        public List<Integer> getUserIds() {
+            return userids;
         }
 
-        public void setUsrgrpids(List<Integer> usrgrpids) {
-            this.usrgrpids = usrgrpids;
+        public void setUserIds( List<Integer> userids) {
+            this.userids = userids;
         }
     }
 }

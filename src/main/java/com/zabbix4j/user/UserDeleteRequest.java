@@ -4,16 +4,17 @@
 
 package com.zabbix4j.user;
 
+import java.util.ArrayList;
 import java.util.List;
 import com.zabbix4j.ZabbixApiRequest;
 import com.zabbix4j.utils.ZbxListUtils;
 
 public class UserDeleteRequest extends ZabbixApiRequest {
 
-    private List<Integer> params;
+    private List<Integer> params=new ArrayList<Integer>(  );
 
     public UserDeleteRequest() {
-        setMethod("usergroup.delete");
+        setMethod("user.delete");
     }
 
     public List<Integer> getParams() {

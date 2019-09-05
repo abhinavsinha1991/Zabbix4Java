@@ -6,8 +6,7 @@ package com.zabbix4j.user;
 
 import java.util.List;
 import com.zabbix4j.ZabbixApiRequest;
-import com.zabbix4j.usergroup.PermissionObject;
-import com.zabbix4j.usergroup.UserGroupObject;
+import com.zabbix4j.usergroup.UserGroupID;
 import com.zabbix4j.utils.ZbxListUtils;
 
 public class UserUpdateRequest extends ZabbixApiRequest {
@@ -15,7 +14,7 @@ public class UserUpdateRequest extends ZabbixApiRequest {
     private Params params = new Params();
 
     public UserUpdateRequest() {
-        setMethod("usergroup.update");
+        setMethod("user.update");
     }
 
     public Params getParams() {
@@ -26,37 +25,32 @@ public class UserUpdateRequest extends ZabbixApiRequest {
         this.params = params;
     }
 
-    public class Params extends UserGroupObject {
-        private List<PermissionObject> rights;
-        private List<Integer> userids;
+    public class Params extends UserObject {
+        private List<UserGroupID> usrgrps;
+        private String passwd;
 
         public Params() {
             super();
         }
 
-        public void addPermission(Integer hostgroupId, Integer permission) {
-            rights = ZbxListUtils.add(rights, new PermissionObject(hostgroupId, permission));
+        public void addUserGroupId( UserGroupID id) {
+            usrgrps = ZbxListUtils.add(usrgrps, id);
         }
 
-        public void addUserId(Integer id) {
-            userids = ZbxListUtils.add(userids, id);
+        public List<UserGroupID> getUserGroupIds() {
+            return usrgrps;
         }
 
-        public List<PermissionObject> getRights() {
-            return rights;
+        public String getPasswd()
+        {
+            return passwd;
         }
 
-        public void setRights(List<PermissionObject> rights) {
-            this.rights = rights;
+        public void setPasswd( final String passwd )
+        {
+            this.passwd = passwd;
         }
 
-        public List<Integer> getUserids() {
-            return userids;
-        }
-
-        public void setUserids(List<Integer> userids) {
-            this.userids = userids;
-        }
 
     }
 

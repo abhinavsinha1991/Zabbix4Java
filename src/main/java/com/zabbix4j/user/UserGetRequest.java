@@ -14,7 +14,7 @@ public class UserGetRequest extends ZabbixApiRequest {
     private Params params = new Params();
 
     public UserGetRequest() {
-        setMethod("usergroup.get");
+        setMethod("user.get");
     }
 
     public Params getParams() {
@@ -27,11 +27,8 @@ public class UserGetRequest extends ZabbixApiRequest {
 
     public class Params extends GetRequestCommonParams {
 
-        private Integer status;
         private List<Integer> userids;
         private List<Integer> usrgrpids;
-        private Integer with_gui_access;
-        private String selectUsers;
 
         public Params() {
             super();
