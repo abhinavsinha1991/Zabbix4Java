@@ -1,9 +1,9 @@
 package com.zabbix4j.usergroup;
 
-import com.zabbix4j.ZabbixApiTestBase;
-import org.junit.Test;
-
 import static org.junit.Assert.assertNotNull;
+
+import org.junit.Test;
+import com.zabbix4j.ZabbixApiTestBase;
 
 /**
  * Created by Suguru Yajima on 2014/05/14.

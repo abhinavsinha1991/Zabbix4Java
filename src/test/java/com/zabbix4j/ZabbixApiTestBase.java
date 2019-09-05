@@ -24,12 +24,12 @@
 
 package com.zabbix4j;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import static org.junit.Assert.fail;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static org.junit.Assert.fail;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 /**
  * Created by Suguru Yajima on 2014/04/27.
@@ -38,7 +38,7 @@ public class ZabbixApiTestBase {
 
     protected static Logger logger = LoggerFactory.getLogger(ZabbixApiTestBase.class);
     protected String user = "admin";
-    protected String password = "zabbix";
+    protected String password = "123";
 
     protected ZabbixApi zabbixApi;
 
@@ -48,7 +48,11 @@ public class ZabbixApiTestBase {
 
     protected void login(String user, String password) {
         try {
-            zabbixApi = new ZabbixApi("http://192.168.200.10/zabbix/api_jsonrpc.php");
+
+            //Use one or the other URL variant. One of them should work
+            zabbixApi = new ZabbixApi("http://zabbix.server.com/api_jsonrpc.php");
+            /*zabbixApi = new ZabbixApi("http://zabbix.server.com/zabbix/api_jsonrpc.php");*/
+
             zabbixApi.login(user, password);
         } catch (ZabbixApiException e) {
             fail(e.getMessage());

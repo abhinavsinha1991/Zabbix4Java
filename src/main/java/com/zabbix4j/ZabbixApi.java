@@ -121,6 +121,12 @@ public class ZabbixApi {
         return new UserGroup(this.apiUrl, this.auth);
     }
 
+    public User user()
+    {
+
+        return new User( this.apiUrl, this.auth );
+    }
+
     public Action action() {
 
         return new Action(this.apiUrl, this.auth);

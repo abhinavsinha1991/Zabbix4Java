@@ -38,6 +38,11 @@ public class User extends ZabbixApiMethod {
         super(apiUrl, null);
     }
 
+    public User( String apiUrl , String auth)
+    {
+        super( apiUrl, auth );
+    }
+
     public UserLoginResponse login (UserLoginRequest request) throws ZabbixApiException {
         UserLoginResponse response = null;
 
@@ -51,6 +56,98 @@ public class User extends ZabbixApiMethod {
             response = gson.fromJson(responseJson, UserLoginResponse.class);
         } catch (ZabbixApiException e) {
             throw new ZabbixApiException(e);
+        }
+
+        return response;
+    }
+
+    public UserCreateResponse create( UserCreateRequest request ) throws ZabbixApiException
+    {
+        UserCreateResponse response = null;
+        request.setAuth( auth );
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson( request );
+
+        try
+        {
+            String responseJson = sendRequest( requestJson );
+
+            response = gson.fromJson( responseJson, UserCreateResponse.class );
+        }
+        catch ( ZabbixApiException e )
+        {
+            throw new ZabbixApiException( e );
+        }
+
+        return response;
+    }
+
+    public UserDeleteResponse delete( UserDeleteRequest request ) throws ZabbixApiException
+    {
+        UserDeleteResponse response = null;
+        request.setAuth( auth );
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson( request );
+
+        try
+        {
+            String responseJson = sendRequest( requestJson );
+
+            response = gson.fromJson( responseJson, UserDeleteResponse.class );
+        }
+        catch ( ZabbixApiException e )
+        {
+            throw new ZabbixApiException( e );
+        }
+
+        return response;
+    }
+
+    public UserUpdateResponse update( UserUpdateRequest request ) throws ZabbixApiException
+    {
+        UserUpdateResponse response = null;
+        request.setAuth( auth );
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson( request );
+
+        try
+        {
+            String responseJson = sendRequest( requestJson );
+
+            response = gson.fromJson( responseJson, UserUpdateResponse.class );
+        }
+        catch ( ZabbixApiException e )
+        {
+            throw new ZabbixApiException( e );
+        }
+
+        return response;
+    }
+
+    public UserGetResponse get( UserGetRequest request ) throws ZabbixApiException
+    {
+        UserGetResponse response = null;
+        request.setAuth( auth );
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        String requestJson = gson.toJson( request );
+
+        try
+        {
+            String responseJson = sendRequest( requestJson );
+
+            response = gson.fromJson( responseJson, UserGetResponse.class );
+        }
+        catch ( ZabbixApiException e )
+        {
+            throw new ZabbixApiException( e );
         }
 
         return response;
